@@ -1,0 +1,20 @@
+# TrackAI — root gitignore
+
+node_modules/
+.env
+.env.local
+.env.example
+.env.*.local
+dist/
+*.log
+.DS_Store
+
+# Server
+server/node_modules/
+server/.env
+
+# Client
+client/node_modules/
+client/dist/
+client/.env
+client/.env.local

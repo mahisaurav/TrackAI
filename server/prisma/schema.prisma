@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Application {
+  id          Int      @id @default(autoincrement())
+
+  company     String   @db.VarChar(255)
+  role        String   @db.VarChar(255)
+  location    String   @db.VarChar(255)
+
+  status      String   @default("Applied")
+  match       Int
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId      Int
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+
+  name          String        @db.VarChar(255)
+  email         String        @unique @db.VarChar(255)
+  password      String
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  applications  Application[]
+  resumes       Resume[]
+  dsaProgress   DsaProgress[]
+  dsaUserStats  DsaUserStats?
+  dailyTasks    DailyTask[]
+}
+
+model DsaProgress {
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  questionKey  String    @db.VarChar(64)
+  completed    Boolean   @default(false)
+  confidence   String?   @db.VarChar(20)
+  notes        Json?
+  lastRevision DateTime?
+  nextRevision DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionKey])
+  @@index([userId])
+}
+
+model DsaUserStats {
+  id             Int       @id @default(autoincrement())
+  userId         Int       @unique
+  dailyGoal      Int       @default(3)
+  activityLog    Json      @default("{}")
+  currentStreak  Int       @default(0)
+  longestStreak  Int       @default(0)
+  lastActiveDate DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DailyTask {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  title       String    @db.VarChar(255)
+  status      String    @default("pending") @db.VarChar(20)
+  taskDate    DateTime  @db.Date
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, taskDate])
+}
+
+model Resume {
+  id          Int      @id @default(autoincrement())
+
+  title       String
+
+  filename    String
+
+  s3Key       String
+  
+  atsScore    Int?
+
+  analyzed    Boolean @default(false)
+
+  atsReport   Json?
+
+  uploadedAt  DateTime @default(now())
+
+  userId      Int
+
+   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #09090b;
+    color: #fafafa;
+  }
+
+  [data-theme="light"] body {
+    background-color: #fafafa;
+    color: #18181b;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.35);
+  }
+}
