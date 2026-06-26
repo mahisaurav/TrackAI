@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import ProgressCards from "../components/DSA/ProgressCards";
-import AnalyticsCards from "../components/DSA/AnalyticsCards";
-import SearchBar from "../components/DSA/SearchBar";
-import TopicAccordion from "../components/DSA/TopicAccordion";
+import ProgressCards from "../components/dsa/ProgressCards";
+import AnalyticsCards from "../components/dsa/AnalyticsCards";
+import SearchBar from "../components/dsa/SearchBar";
+import TopicAccordion from "../components/dsa/TopicAccordion";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
-import RevisionQueue from "../components/DSA/RevisionQueue";
+import RevisionQueue from "../components/dsa/RevisionQueue";
 import dsaTopics from "../data/dsaTopic";
 import {
   getQuestionKey,
