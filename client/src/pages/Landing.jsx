@@ -2,7 +2,7 @@ import HeroSection from "../components/landing/HeroSection";
 import FeatureSection from "../components/landing/FeatureSection";
 import DashboardPreview from "../components/landing/DashboardPreview";
 import CTASection from "../components/landing/CTASection";
-import Footer from "../components/Landing/Footer";
+import Footer from "../components/landing/Footer";
 
 function Landing() {
 
