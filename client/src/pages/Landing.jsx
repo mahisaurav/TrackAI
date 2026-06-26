@@ -1,8 +1,8 @@
-import HeroSection from "../components/landing_temp/HeroSection";
-import FeatureSection from "../components/landing_temp/FeatureSection";
-import DashboardPreview from "../components/landing_temp/DashboardPreview";
-import CTASection from "../components/landing_temp/CTASection";
-import Footer from "../components/landing_temp/Footer";
+import HeroSection from "../components/landing/HeroSection";
+import FeatureSection from "../components/landing/FeatureSection";
+import DashboardPreview from "../components/landing/DashboardPreview";
+import CTASection from "../components/landing/CTASection";
+import Footer from "../components/landing/Footer";
 
 function Landing() {
 

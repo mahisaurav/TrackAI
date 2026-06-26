@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
-import InterviewForm from "../components/mockInterview_temp/InterviewForm";
-import QuestionList from "../components/mockInterview_temp/QuestionList";
+import InterviewForm from "../components/mockInterview/InterviewForm";
+import QuestionList from "../components/mockInterview/QuestionList";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 import { generateInterview } from "../api/mockInterviewApi";
 import { getResumes } from "../api/resumeApi";
